@@ -30,6 +30,7 @@ class Cell {
       newSize += random(-1, 1) * random(this.mutIntensity);
       newChance += random(-1, 1) * random(this.mutIntensity)/100;
       newmutChance += random(-1, 1) * random(this.mutIntensity)/100;
+      print(`R: ${this.r} G: ${this.g} B: ${this.b}`);
       print("A Cell has mutated");
     }
 
@@ -54,7 +55,7 @@ class Cell {
       if (cells[i].x == x+xoffset && cells[i].y == y+yoffset) overlap = true;
     }*/
     if (!overlap) {
-      cells[cellnum++] = new Cell(this.id, this.x+xoffset, this.y+yoffset, this.vel, newSize, this.newR, this.newG, this.newB, newChance, newmutChance, this.mutIntensity, this.deathtime);
+      cells[cellnum++] = new Cell(this.id, this.x+xoffset, this.y+yoffset, this.vel, newSize, newR, newG, newB, newChance, newmutChance, this.mutIntensity, this.deathtime);
     }
   }
 
@@ -95,7 +96,7 @@ let cellnum = 0;
 function setup() {
   createCanvas(640, 480);
   
-  spawnCells(1, 30, 50, 255, 50, 5, 0.004, 0.003, 10, 60*10, 5000);
+  spawnCells(1, 30, 50, 255, 50, 5, 0.004, 0.03, 10, 60*10, 5000);
 }
 
 function draw() {
