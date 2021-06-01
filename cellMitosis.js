@@ -24,12 +24,12 @@ class Cell {
     let newmutChance = this.mutChance;
     
     if (random(1) < this.mutChance) {
-      newR = random(255);
-      newG = random(255);
-      newB = random(255);
+      newR = int(random(255));
+      newG = int(random(255));
+      newB = int(random(255));
       newSize += random(-1, 1) * random(this.mutIntensity);
-      newChance += random(-1, 1)*random(this.mutIntensity)/100;
-      newmutChance += random(-1, 1)*random(this.mutIntensity)/100;
+      newChance += random(-1, 1) * random(this.mutIntensity)/100;
+      newmutChance += random(-1, 1) * random(this.mutIntensity)/100;
       print("A Cell has mutated");
     }
 
