@@ -1,5 +1,3 @@
-
-
 class Cell {
   constructor(id, x, y, vel, size, r, g, b, chance, mutChance, mutIntensity, deathtime) {
     this.id = id;
@@ -32,7 +30,7 @@ class Cell {
       newSize += random(-1, 1) * random(this.mutIntensity);
       newChance += random(-1, 1)*random(this.mutIntensity)/100;
       newmutChance += random(-1, 1)*random(this.mutIntensity)/100;
-      println("EVOLUTION");
+      print("A Cell has mutated");
     }
 
     let dir = random(1);
