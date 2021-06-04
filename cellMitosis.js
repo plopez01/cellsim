@@ -1,3 +1,5 @@
+let start = false;
+
 class DNA {
   constructor(vel, size, color, mitChance, mutChance, mutIntensity, lifespan){
     this.size = size;
@@ -27,7 +29,7 @@ class Cell {
   }
 
   mitosis() {
-    let dnaCopy = this.dna;
+    let dnaCopy = new DNA(this.dna.vel, this.dna.size, this.dna.color, this.dna.mitChance, this.dna.mutChance, this.dna.mutIntensity, this.dna.lifespan);
 
     if (random(1) < this.dna.mutChance) {
       dnaCopy.mutate();
@@ -50,9 +52,9 @@ class Cell {
 
     if ((this.x+xoffset < 0 || this.x+xoffset > width) || (this.y+yoffset < 0 || this.y+yoffset > height)) return;
 
-    for (let i = 0; i < cellnum; i++) {
+    /*for (let i = 0; i < cellnum; i++) {
       if (cells[i].x == this.x+xoffset && cells[i].y == this.y+yoffset) overlap = true;
-    }
+    }*/
     if (!overlap) {
       cells[cellnum++] = new Cell(this.id, this.x+xoffset, this.y+yoffset, dnaCopy);
     }
@@ -63,8 +65,8 @@ class Cell {
       return;
     }
     
-    //this.x += random(-this.dna.vel, this.dna.vel);
-    //this.y += random(-this.dna.vel, this.dna.vel);
+    this.x += random(-this.dna.vel, this.dna.vel);
+    this.y += random(-this.dna.vel, this.dna.vel);
 
     if (random(1) < this.dna.mitChance) {
       this.mitosis();
@@ -96,10 +98,11 @@ let cellnum = 0;
 function setup() {
   createCanvas(640, 480);
   
-  spawnCells(1, 30, [50, 255, 50], 5, 0.004, 0.004, 1, 60*15);
+  spawnCells(1, 30, [50, 255, 50], 5, 0.004, 0.008, 1, 60*15);
 }
 
 function draw() {
+  if(!start) return;
   background(0);
   if(cellnum >= 600) cellnum = 0;
   for (let i = 0; i < cells.length; i++) {
@@ -120,4 +123,7 @@ function spawnCells(num, size, color, vel, chance, mutChance, mutIntensity, life
   }
 }
 
-
+function keyPressed() {
+  // Do something
+  start = !start;
+}
