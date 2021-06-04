@@ -79,7 +79,7 @@ function setup() {
 
   cellLifespanInput = createInput('');
   cellLifespanInput.size(80);
-  cellLifespanInput.value(20);
+  cellLifespanInput.value(60);
   cellLifespanInput.attribute('placeholder', 'Cell lifetime');
 
   createSpan('<br><br><strong>Cell limit: </strong>');
