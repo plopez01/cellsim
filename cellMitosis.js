@@ -97,7 +97,9 @@ let cellnum = 0;
 
 function setup() {
   createCanvas(640, 480);
-  
+  background(0);
+  fill(255);
+  text("Press any key to start", width/2-60, height/2);
   spawnCells(1, 30, [50, 255, 50], 5, 0.004, 0.008, 1, 60*15);
 }
 
@@ -125,5 +127,5 @@ function spawnCells(num, size, color, vel, chance, mutChance, mutIntensity, life
 
 function keyPressed() {
   // Do something
-  start = !start;
+  start = true;
 }
